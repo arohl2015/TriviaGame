@@ -19,18 +19,30 @@ crossorigin="anonymous"></script>
         <h1>Pop Culture Trivia</h1>
     </div>
 
+    <button class="btn primary-btn" id="start">Start the Game!</button>
+    
     <div id="content">
+
         <div class="wrapper">	
             <div id= "timer"></div>
           <div id= "question"></div>
-          <div id= "answer"></div>
-        <button class="btn primary-btn" id="start">Start the Game!</button>
-        <button class="btn primary-btn" id="reset">Try Again?</button>
+          <div id= "answer">
+            <button id="choice-1" class= "userchoice" value="0"></button>
+            <button id="choice-2" class= "userchoice" value="1"></button>
+            <button id="choice-3" class= "userchoice" value="2"></button>
+            <button id="choice-4" class= "userchoice" value="3"></button>
+          </div>
       </div>
       </div>
 
+      <div id="displayresults">
+          <div id= "results"></div>
+        <button class="btn primary-btn" id="reset">Try Again?</button>
+
+      </div>
+
 <!--link in JS that links to js game file in assets folder-->
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 
 </body>
 </html>
