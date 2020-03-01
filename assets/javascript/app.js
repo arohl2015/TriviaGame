@@ -1,19 +1,19 @@
-// Creating the variables to track progress in game
+//Start game
 
+// Creating the variables to track progress in game
 var questionNumber = 0;
-//will this read 30 seconds or do I need to enter in 30000?
-var timeLeft = 30;
+//will this read 15 seconds or do I need to enter in 15000?
+var timeLeft = 15;
 var questionCorrect = 0;
 var questionWrong = 0;
-//created placeholder var to push var questions
-var placeholder = [];
+//creat var to load questions
+var indexQ = 0;
 //variable for user input 
-var guess = "";
+var guess = false; //<---will this actually stop the timer if the user clicks?
 var right;
 var wrong;
-
 // create the questions and answers for the game
-
+$(document).ready(function () {
 var questions = [
     {
         question: "Which popular TV show premiered in 1994?",
@@ -49,54 +49,46 @@ var questions = [
         question: "Lady Gaga wore a dress made of what to the MTV VMA's?",
         choice: ["Roses", "Plastic", "Vegetables", "Meat"],
         answer: 3,
-        photo: ""
+        photo: "assets/images/gagameatdress.gif"
     },
     {
         question: "Who won the 1st season of the show Survivor?",
         choice: ["Justin Guarini", "Richard Hatch", "Trista Rehn", "Alex Michel"],
         answer: 1,
-        photo: ""
+        photo: "assets/images/hatch.gif"
     },
     {
         question: "The popular reality series Keeping up with the Kardashians premiered in what year?",
         choice: ["2007", "2008", "2009", "2010"],
         answer: 0,
-        photo: ""
+        photo: "assets/images/kardashian.gif"
     },
     {
         question: "What are Justin Bieber fans known as?",
         choice: ["Beavers", "Believers", "Beliebers", "Blenders"],
         answer: 2,
-        photo: ""
+        photo: "assets/images/bieber.gif"
     },
     {
         question: "Who hosts the singing competition The Voice?",
         choice: ["Ryan Seacrest", "Chris Harrison", "Jimmy Fallon", "Carson Daly"],
         answer: 3,
-        photo: ""
+        photo: "assets/images/thevoice.gif"
     },
-]
-
-$("#content").hide();
-$("#results").hide();
-$("#reset").hide();
-//Start game
-// $(document).ready(function () {
-//     
-//     //Need to put questions below within these brackets?
-// })
+})]
 
 //hide (How to hide parts of text) and reset function (will clear or reset the input form fields) to transition between question slides and start the game
+// $("#answer").hide();
+// $("#question").hide();
+$("#reset").hide();
 
 // Start the game by clicking on the "start" button
 $("#start").on("click", function () {
-    //$("#start").show();
+    $("#start").hide();
     $("#content").show();
     displayQuestion();
 		//runTime();
-
-            //The push() method adds new items to the end of an array, and returns the new length.
-	
+//The push() method adds new items to the end of an array, and returns the new length.	
 })
 
 // Need to add function to start the timer
@@ -126,9 +118,8 @@ function stop() {
 
 // Is there where I put the questions array?
 function displayQuestion() {
-
-    // index = Math.floor(Math.random()*questions.length);
-    //  guess = questions[index];
+// index = Math.floor(Math.random()*questions.length);
+// guess = questions[index];
     $("#question").text(questions[questionNumber].question);
     $("#choice-1").text(questions[questionNumber].choice[0]);
     $("#choice-2").text(questions[questionNumber].choice[1]);
@@ -173,10 +164,6 @@ function displayResults() {
     $("#results").append("<h3> Wrong Answers" + questionWrong + "</h3>");
     $("#reset").show();
 }
-
-
-// 
-
 
 //reset - is it a function or click even with the button?
 $("#reset").on("click", function () {
