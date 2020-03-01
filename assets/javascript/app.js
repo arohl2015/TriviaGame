@@ -2,15 +2,22 @@
 
 $(document).ready(function () {
 startGame()
+//Need to put all the stuff below within these brackets?
 })
 
 // Creating the variables to track progress in game
 
 var questionNumber = 0;
-//will this read 20 seconds or do I need to enter in 2000?
-var timeLeft = 20;
+//will this read 30 seconds or do I need to enter in 3000?
+var timeLeft = 30;
 var questionCorrect = 0;
 var questionWrong = 0;
+//created placeholder var to push var questions
+var placeholder = [];
+//variable for user input 
+var guess ="";
+var right;
+var wrong;
 
 //within here create the questions and answers for the game
 
@@ -77,15 +84,23 @@ var questions = [
     },
 ]
 
+//hide (How to hide parts of text) and reset function (will clear or reset the input form fields) to transition between question slides and start the game
+$("#reset").hide;
 // Start the game by clicking on the "start" button
-$("start").on("click", function () {
-// Loop through questions - is that done within the start function?
+$("#start").on("click", function () {
+    $("#start").hide;
+    displayQuestion();
+		runTime();
+		for(var i = 0; i < questions.length; i++) {
+            //The push() method adds new items to the end of an array, and returns the new length.
+	placeholder.push(questions[i]);
+}
 }
 
 // Need to add function to start the timer
 function runTime() {
     if (!timerRunning) {
-        intervalId = setInterval(count, 2000);
+        intervalId = setInterval(count, 3000);
         clockRunning = true;
 }
 
@@ -95,28 +110,60 @@ function decrement() {
     $("#timer").html("<h2>Time Remaining: " + timeLeft + "</h2>");
 }
 
-// Allow functionality to stop the timer once it reaches 0
+// What happens if the timer reaches 0 before the person answers the question?
+if (timeLeft === 0) {
+    var questionNumber ++;
+    stop();
+    $("#answer").html("<p>Time's up! The correct answer is: " + guess.choice[guess.answer] + "</p>");
+		hidepicture();
+}
+
+// Allow functionality to stop the timer
 function stop() {
     clearInterval(intervalId);
     timerRunning = false;
   }
-// Within here will need to add in the vars relating to Q&A's
-// If/Else statement to clarify if user is correct or wrong 
-if (condition) {
 
-
-} else {
-
+// Is there where I put the questions array?
+function displayQuestion () {
+    index = Math.floor(Math.random()*questions.length);
 }
 
-// Click function as user selects choice
+// If/Else statement regarding whether user selects right or wrong answer
+if (guess === right) {
+    stop();
+    questionCorrect++;
+    guess="";
+    $("#answer").html("<p>You're Correct!</p>");
+    hidepicture();
+
+} else {
+    stop();
+    questionWrong++;
+    guess="";
+    $("#answer").html("<p>That's Wrong. The correct answer is: " + guess.choice[guess.answer] + "</p>");
+    hidepicture();
+}
+
+// Add in function to define hidepicture
+function hidepicture() {
+    
+}
 
 
 // Show tally of correct/wrong answers to trivia
 
-//reset
+if () {
+    
+} else {
+    
+}
+
+//reset - is it a function or click even with the button?
 function reset() {
 
 }
+
+$("#reset").on("click", function () {
 
 //End of Script
