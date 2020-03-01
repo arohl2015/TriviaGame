@@ -12,43 +12,44 @@ var guess ="";
 var right;
 var wrong;
 
+//Start game
 $(document).ready(function () {
 
 //Need to put questions below within these brackets?
 })
 
-//within here create the questions and answers for the game
+// create the questions and answers for the game
 
 var questions = [
     {
-        question: "Which Popular TV Show Premiered in 1994?",
+        question: "Which popular TV show premiered in 1994?",
         choice: ["Frasier", "Friends", "Seinfeld", "Home Improvement"],
         answer: 1,
         photo: "assets/images/friends.gif"
     },
     {
-        question: "What's the Name of the Boy Band Whose First Single Was I Want You Back?",
+        question: "What's the name of the boy band whose 1st single was I Want You Back?",
         choice: ["98 Degrees", "Backstreet Boys", "O-Town", "NSYNC"],
         answer: 3,
         photo: "assets/images/nsync.gif"
     },
     {
-        question:
-        choice:
-        answer:
-        photo:
+        question: "Which of the movies below did NOT star Lindsey Lohan?",
+        choice: ["Just My Luck", "The Other Side of Heaven", "Mean Girls", "I Know Who Killed Me"],
+        answer: 1,
+        photo: "assets/images/lohan.gif"
     },
     {
-        question:
-        choice:
-        answer:
-        photo:
+        question: "Disney turned comics from what company into popular movies starting in 2008?",
+        choice: ["DC", "Dark Horse", "Marvel", "Image"],
+        answer: 2,
+        photo: "assets/images/ironman.gif"
     },
     {
-        question:
-        choice:
-        answer:
-        photo:
+        question: "Britney Spears has named all her dogs these names except:"
+        choice: ["Lucy", "Bit Bit", "Hannah", "Lacy Loo"]
+        answer: 0,
+        photo: "assets/images/britney.gif"
     },
     {
         question:
