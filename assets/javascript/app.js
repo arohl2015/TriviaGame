@@ -1,12 +1,81 @@
-// Beiginning of game - creating the variables to use in the game
+// Beginning of game - start it
 
-
-// Getting the game ready to run
 $(document).ready(function () {
-//within here create the questions and answers for the game
-
 }
 )
+
+// Creating the variables to track progress in game
+
+var questionNumber = 0;
+//will this read 15 seconds or do I need to enter in 1500?
+var timeLeft = 15;
+var questionCorrect = 0;
+var questionWrong = 0;
+
+//within here create the questions and answers for the game
+
+var questions = [
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+    {
+        question:
+        choice:
+        answer:
+        photo:
+    },
+]
 
 // Start the game by clicking on the "start" button
 
@@ -22,7 +91,7 @@ if (condition) {
 
 
 } else {
-    
+
 }
 
 // Click function as user selects choice
