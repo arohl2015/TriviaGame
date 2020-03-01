@@ -45,36 +45,36 @@ var questions = [
         answer: 0,
         photo: "assets/images/britney.gif"
     }
-    //    {
-    //         question:
-    //         choice:
-    //         answer:
-    //         photo:
-    //     },
-    //     {
-    //         question:
-    //         choice:
-    //         answer:
-    //         photo:
-    //     },
-    //     {
-    //         question:
-    //         choice:
-    //         answer:
-    //         photo:
-    //     },
-    //     {
-    //         question:
-    //         choice:
-    //         answer:
-    //         photo:
-    //     },
-    //     {
-    //         question:
-    //         choice:
-    //         answer:
-    //         photo:
-    //     },
+    {
+        question: "Lady Gaga wore a dress made of what to the MTV VMA's?",
+        choice: ["Roses", "Plastic", "Vegetables", "Meat"],
+        answer: 3,
+        photo: ""
+    },
+    {
+        question: "Who won the 1st season of the show Survivor?",
+        choice: ["Justin Guarini", "Richard Hatch", "Trista Rehn", "Alex Michel"],
+        answer: 1,
+        photo: ""
+    },
+    {
+        question: "The popular reality series Keeping up with the Kardashians premiered in what year?",
+        choice: ["2007", "2008", "2009", "2010"],
+        answer: 0,
+        photo: ""
+    },
+    {
+        question: "What are Justin Bieber fans known as?",
+        choice: ["Beavers", "Believers", "Beliebers", "Blenders"],
+        answer: 2,
+        photo: ""
+    },
+    {
+        question: "Who hosts the singing competition The Voice?",
+        choice: ["Ryan Seacrest", "Chris Harrison", "Jimmy Fallon", "Carson Daly"],
+        answer: 3,
+        photo: ""
+    },
 ]
 
 $("#content").hide();
@@ -165,7 +165,7 @@ $(".userchoice").on("click", function () {
 
     }
 })
-// Add in function to define hidepicture
+// Show tally of correct/wrong answers to trivia
 function displayResults() {
     console.log(questionCorrect, questionWrong);
     $("#displayresults").show();
@@ -175,7 +175,7 @@ function displayResults() {
 }
 
 
-// Show tally of correct/wrong answers to trivia
+// 
 
 
 //reset - is it a function or click even with the button?
