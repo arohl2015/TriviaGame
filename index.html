@@ -9,6 +9,7 @@
 src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture&display=swap" rel="stylesheet">
  <!--links for bootstrap-->
  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -19,19 +20,18 @@ crossorigin="anonymous"></script>
         <h1>Pop Culture Trivia!</h1>
     </div>
 
-    <button class="btn primary-btn" id="start">Start the Game!</button>
 
     <div id="content">
-
-        <div class="wrapper">	
+        <div class="wrapper">
+            <button class="btn primary-btn" id="start">Start the Game!</button>	
             <div id= "timer"></div>
-          <div id= "question"></div>
-          <div id= "answer">
+            <div id= "question">
             <button id="choice-1" class= "userchoice" value="0"></button>
             <button id="choice-2" class= "userchoice" value="1"></button>
             <button id="choice-3" class= "userchoice" value="2"></button>
             <button id="choice-4" class= "userchoice" value="3"></button>
           </div>
+          <div id= "answer"></div>
       </div>
       </div>
 

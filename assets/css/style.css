@@ -1,0 +1,15 @@
+.jumbotron {
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Black And White Picture';
+    color: black;
+    background-color: rgb(70, 70, 18);
+    width: 100%;
+}
+
+body {
+    background-image: url(../images/bright_squares.png);
+}

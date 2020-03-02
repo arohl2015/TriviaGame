@@ -78,19 +78,16 @@ var questions = [
 })]
 
 //hide (How to hide parts of text) and reset function (will clear or reset the input form fields) to transition between question slides and start the game
-// $("#answer").hide();
-// $("#question").hide();
 $("#reset").hide();
 
 // Start the game by clicking on the "start" button
 $("#start").on("click", function () {
     $("#start").hide();
-    $("#content").show();
     displayQuestion();
+   // $("#content").show();
 		//runTime();
 //The push() method adds new items to the end of an array, and returns the new length.	
 })
-
 // Need to add function to start the timer
 function runTime() {
    // if (!timerRunning) {
@@ -164,9 +161,8 @@ function displayResults() {
     $("#results").append("<h3> Wrong Answers" + questionWrong + "</h3>");
     $("#reset").show();
 }
-
 //reset - is it a function or click even with the button?
 $("#reset").on("click", function () {
-})
 
+})
 //End of Script
