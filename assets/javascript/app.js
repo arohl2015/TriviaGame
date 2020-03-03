@@ -1,17 +1,5 @@
 //Start game
 
-// Creating the variables to track progress in game
-var questionNumber = 0;
-//will this read 15 seconds or do I need to enter in 15000?
-var timeLeft = 15;
-var questionCorrect = 0;
-var questionWrong = 0;
-//creat var to load questions
-var indexQ = 0;
-//variable for user input 
-var guess = false; //<---will this actually stop the timer if the user clicks?
-var right;
-var wrong;
 // create the questions and answers for the game
 $(document).ready(function () {
 var questions = [
@@ -75,25 +63,38 @@ var questions = [
         answer: 3,
         photo: "assets/images/thevoice.gif"
     },
-})]
+}];
+
+// Creating the variables to track progress in game
+var questionNumber = 0;
+//will this read 15 seconds or do I need to enter in 15000?
+var timeLeft = 15;
+//more vars for the timer
+var intervalID;
+var running = false;
+var questionCorrect = 0;
+var questionWrong = 0;
+//variable for user input 
+var guess = "";
+var right;
+var wrong;
 
 //hide (How to hide parts of text) and reset function (will clear or reset the input form fields) to transition between question slides and start the game
 $("#reset").hide();
-
 // Start the game by clicking on the "start" button
 $("#start").on("click", function () {
     $("#start").hide();
     displayQuestion();
    // $("#content").show();
-		//runTime();
+		runTime();
 //The push() method adds new items to the end of an array, and returns the new length.	
 })
 // Need to add function to start the timer
 function runTime() {
-   // if (!timerRunning) {
+    if (!running) {
         intervalId = setInterval(decrement, 1000);
         clockRunning = true;
-    //}
+    }
 }
 // Timer is started, now the countdown needs to begin (interval function)
 function decrement() {
@@ -109,10 +110,9 @@ function decrement() {
 }
 // Allow functionality to stop the timer
 function stop() {
-    clearInterval(intervalId);
     timerRunning = false;
+    clearInterval(intervalId);
 }
-
 // Is there where I put the questions array?
 function displayQuestion() {
 // index = Math.floor(Math.random()*questions.length);
@@ -123,7 +123,6 @@ function displayQuestion() {
     $("#choice-3").text(questions[questionNumber].choice[2]);
     $("#choice-4").text(questions[questionNumber].choice[3]);
 }
-
 // Need to add a click event regarding answers
 $(".userchoice").on("click", function () {
     guess = parseInt($(this).attr("value"));
@@ -131,7 +130,7 @@ $(".userchoice").on("click", function () {
 
     // If/Else statement regarding whether user selects right or wrong answer
     if (guess === questions[questionNumber].answer) {
-        // stop();
+        //stop();
         questionCorrect++;
         guess = "";
         $("#answer").html("<p>You're Correct!</p>");
@@ -150,9 +149,15 @@ $(".userchoice").on("click", function () {
 
     } else {
         displayResults();
-
     }
 })
+
+// function hidepicture() {
+//$("answer").append("img src=" + guess.photo + ">")
+// }
+
+
+
 // Show tally of correct/wrong answers to trivia
 function displayResults() {
     console.log(questionCorrect, questionWrong);
@@ -163,6 +168,11 @@ function displayResults() {
 }
 //reset - is it a function or click even with the button?
 $("#reset").on("click", function () {
-
+// $("#reset").hide();
+// $("#question").empty();
+// $("#answer").empty();
+//runTime();
+//displayQuestion();
 })
+)
 //End of Script
