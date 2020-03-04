@@ -13,25 +13,25 @@ $(document).ready(function () {
             question: "What's the name of the boy band whose 1st single was I Want You Back?",
             choice: ["98 Degrees", "Backstreet Boys", "O-Town", "NSYNC"],
             answer: 3,
-            photo: "../images/nsync.gif"
+            photo: "./assets/images/nsync.gif"
         },
         {
             question: "Which of the movies below did NOT star Lindsey Lohan?",
             choice: ["Just My Luck", "The Other Side of Heaven", "Mean Girls", "I Know Who Killed Me"],
             answer: 1,
-            photo: "assets/images/lohan.gif"
+            photo: "./assets/images/lohan.gif"
         },
         {
             question: "Disney turned comics from what company into popular movies starting in 2008?",
             choice: ["DC", "Dark Horse", "Marvel", "Image"],
             answer: 2,
-            photo: "assets/images/ironman.gif"
+            photo: "./assets/images/ironman.gif"
         },
         {
             question: "Britney Spears has named all her dogs these names except:",
             choice: ["Lucy", "Bit Bit", "Hannah", "Lacy Loo"],
             answer: 0,
-            photo: "assets/images/britney.gif"
+            photo: "./assets/images/britney.gif"
         },
         {
             question: "Lady Gaga wore a dress made of what to the MTV VMA's?",
@@ -43,32 +43,32 @@ $(document).ready(function () {
             question: "Who won the 1st season of the show Survivor?",
             choice: ["Justin Guarini", "Richard Hatch", "Trista Rehn", "Alex Michel"],
             answer: 1,
-            photo: "../images/hatch.gif"
+            photo: "./assets/images/hatch.gif"
         },
         {
             question: "The popular reality series Keeping up with the Kardashians premiered in what year?",
             choice: ["2007", "2008", "2009", "2010"],
             answer: 0,
-            photo: "assets/images/kardashian.gif"
+            photo: "./assets/images/kardashian.gif"
         },
         {
             question: "What are Justin Bieber fans known as?",
             choice: ["Beavers", "Believers", "Beliebers", "Blenders"],
             answer: 2,
-            photo: "assets/images/bieber.gif"
+            photo: "./assets/images/bieber.gif"
         },
         {
             question: "Who hosts the singing competition The Voice?",
             choice: ["Ryan Seacrest", "Chris Harrison", "Jimmy Fallon", "Carson Daly"],
             answer: 3,
-            photo: "assets/images/thevoice.gif"
+            photo: "./assets/images/thevoice.gif"
         }
     ];
 
     // Creating the variables to track progress in game
     var questionNumber = 0;
     //will this read 15 seconds or do I need to enter in 15000?
-    var timeLeft = 15;
+    var timeLeft = 20;
     //more vars for the timer
     var intervalID;
     //var running = false;
@@ -88,13 +88,12 @@ $(document).ready(function () {
         $("#start").hide();
         $("#content").show();
         displayQuestion();
-        //The push() method adds new items to the end of an array, and returns the new length.	
     })
     // Need to add function to start the timer
     function runTime() {
         clearInterval(intervalID);
-        timeLeft = 15;
-        intervalID = setInterval(decrement, 2000);
+        timeLeft = 20;
+        intervalID = setInterval(decrement, 1000);
     }
     // Timer is started, now the countdown needs to begin (interval function)
     function decrement() {
@@ -104,8 +103,7 @@ $(document).ready(function () {
         if (timeLeft === 0) {
             questionWrong++;
             guess = "";
-            $("#answer").append("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
-            //hidepicture();
+            $("#answer").text("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
             setTimeout(function () {
                 if (questionNumber < questions.length - 1) {
                     questionNumber++;
@@ -116,16 +114,14 @@ $(document).ready(function () {
                     clearInterval(intervalID);
                     displayResults();
                 }
-            }, 1000);
+            }, 3000);
         }
         else {
             timeLeft--;
         }
     }
 
-// Allow functionality to stop the timer
-
-// Is there where I put the questions array?
+// function to display the questions
 function displayQuestion() {
     // index = Math.floor(Math.random()*questions.length);
     // guess = questions[index];
@@ -146,18 +142,15 @@ $(".userchoice").on("click", function () {
     $("#gif").attr("src", questions[questionNumber].photo);
     // If/Else statement regarding whether user selects right or wrong answer
     if (guess === questions[questionNumber].answer) {
-        //stop();
         questionCorrect++;
         guess = "";
-        $("#answer").append("<p>You're Correct!</p>");
-        //hidepicture();
+        $("#answer").prepend("<p>You're Correct!</p>");
 
     } else {
-        //stop();
         questionWrong++;
         guess = "";
-        $("#answer").append("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
-        //hidepicture();
+        $("#answer").prepend("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
+
     }
     setTimeout(function () {
         if (questionNumber < questions.length - 1) {
@@ -168,28 +161,24 @@ $(".userchoice").on("click", function () {
         } else {
             displayResults();
         }
-    }, 1000);
+    }, 3000);
 
 })
-
-// function hidepicture() {
-//$("answer").append("img src=" + guess.photo + ">")
-// }
-
-
 
 // Show tally of correct/wrong answers to trivia
 function displayResults() {
     clearInterval(intervalID);
     console.log(questionCorrect, questionWrong);
+    $("#question").empty();
     $("#displayresults").show();
-    $("#results").append("<h3> Right Answers" + questionCorrect + "</h3>");
-    $("#results").append("<h3> Wrong Answers" + questionWrong + "</h3>");
+    $("#results").append("<h3> Right Answers: " + questionCorrect + "</h3>");
+    $("#results").append("<h3> Wrong Answers: " + questionWrong + "</h3>");
     $("#reset").show();
 
 }
 //reset - is it a function or click even with the button?
 $("#reset").on("click", function () {
+    $("#results").hide();
     $("#reset").hide();
     $("#question").empty();
     $("#answer").empty();
