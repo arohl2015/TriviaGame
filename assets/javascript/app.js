@@ -182,11 +182,13 @@ $(document).ready(function () {
         console.log(questionCorrect, questionWrong);
         $("#question").empty();
         $("#displayresults").show();
+        //results show after last question gif
         $("#results").append("<h3> Right Answers: " + questionCorrect + "</h3>");
         $("#results").append("<h3> Wrong Answers: " + questionWrong + "</h3>");
         $("#reset").show();
 
     }
+    //button at very bottom of page
     //reset - is it a function or click event with the button?
     $("#reset").on("click", function () {
         $("#results").hide();
