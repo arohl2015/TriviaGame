@@ -138,20 +138,29 @@ function displayQuestion() {
 $(".userchoice").on("click", function () {
     guess = parseInt($(this).attr("value"));
     console.log("guess", guess);
+    // $("#answer").empty();
     $("#answer").show();
     $("#gif").attr("src", questions[questionNumber].photo);
     // If/Else statement regarding whether user selects right or wrong answer
     if (guess === questions[questionNumber].answer) {
         questionCorrect++;
         guess = "";
+        $("#answer").empty();
+        $("#gif").empty();
         $("#answer").prepend("<p>You're Correct!</p>");
+        $("#gif").attr("src", questions[questionNumber].photo);
+
 
     } else {
         questionWrong++;
         guess = "";
+        $("#answer").empty();
+        $("#gif").empty();
         $("#answer").prepend("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
-
+        $("#gif").attr("src", questions[questionNumber].photo);
     }
+
+
     setTimeout(function () {
         if (questionNumber < questions.length - 1) {
             questionNumber++;
@@ -182,6 +191,7 @@ $("#reset").on("click", function () {
     $("#reset").hide();
     $("#question").empty();
     $("#answer").empty();
+    questionNumber = 0;
     displayQuestion();
 })
 })
