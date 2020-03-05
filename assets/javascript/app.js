@@ -121,78 +121,80 @@ $(document).ready(function () {
         }
     }
 
-// function to display the questions
-function displayQuestion() {
-    // index = Math.floor(Math.random()*questions.length);
-    // guess = questions[index];
-    $("#answer").hide();
-    $(".wrapper").show();
-    $("#question").text(questions[questionNumber].question);
-    $("#choice-1").text(questions[questionNumber].choice[0]);
-    $("#choice-2").text(questions[questionNumber].choice[1]);
-    $("#choice-3").text(questions[questionNumber].choice[2]);
-    $("#choice-4").text(questions[questionNumber].choice[3]);
-    runTime();
-}
-// Need to add a click event regarding answers
-$(".userchoice").on("click", function () {
-    guess = parseInt($(this).attr("value"));
-    console.log("guess", guess);
-    // $("#answer").empty();
-    $("#answer").show();
-    $("#gif").attr("src", questions[questionNumber].photo);
-    // If/Else statement regarding whether user selects right or wrong answer
-    if (guess === questions[questionNumber].answer) {
-        questionCorrect++;
-        guess = "";
-        $("#answer").empty();
-        $("#gif").empty();
-        $("#answer").prepend("<p>You're Correct!</p>");
-        $("#gif").attr("src", questions[questionNumber].photo);
-
-
-    } else {
-        questionWrong++;
-        guess = "";
-        $("#answer").empty();
-        $("#gif").empty();
-        $("#answer").prepend("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
-        $("#gif").attr("src", questions[questionNumber].photo);
+    // function to display the questions
+    function displayQuestion() {
+        // index = Math.floor(Math.random()*questions.length);
+        // guess = questions[index];
+        $("#answer").hide();
+        $("#gif").hide();
+        $(".wrapper").show();
+        $("#question").text(questions[questionNumber].question);
+        $("#choice-1").text(questions[questionNumber].choice[0]);
+        $("#choice-2").text(questions[questionNumber].choice[1]);
+        $("#choice-3").text(questions[questionNumber].choice[2]);
+        $("#choice-4").text(questions[questionNumber].choice[3]);
+        runTime();
     }
+    // Need to add a click event regarding answers
+    $(".userchoice").on("click", function () {
+        guess = parseInt($(this).attr("value"));
+        console.log("guess", guess);
+        // $("#answer").empty();
+        $("#answer").show();
+        $("#gif").show();
+        $("#gif").attr("src", questions[questionNumber].photo);
+        // If/Else statement regarding whether user selects right or wrong answer
+        if (guess === questions[questionNumber].answer) {
+            questionCorrect++;
+            guess = "";
+            $("#answer").empty();
+            $("#gif").empty();
+            $("#answer").prepend("<p>You're Correct!</p>");
+            $("#gif").attr("src", questions[questionNumber].photo);
 
-
-    setTimeout(function () {
-        if (questionNumber < questions.length - 1) {
-            questionNumber++;
-            console.log(questionNumber);
-            displayQuestion();
 
         } else {
-            displayResults();
+            questionWrong++;
+            guess = "";
+            $("#answer").empty();
+            $("#gif").empty();
+            $("#answer").prepend("<p>That's Wrong. The correct answer is: " + questions[questionNumber].choice[questions[questionNumber].answer] + "</p>");
+            $("#gif").attr("src", questions[questionNumber].photo);
         }
-    }, 3000);
 
-})
 
-// Show tally of correct/wrong answers to trivia
-function displayResults() {
-    clearInterval(intervalID);
-    console.log(questionCorrect, questionWrong);
-    $("#question").empty();
-    $("#displayresults").show();
-    $("#results").append("<h3> Right Answers: " + questionCorrect + "</h3>");
-    $("#results").append("<h3> Wrong Answers: " + questionWrong + "</h3>");
-    $("#reset").show();
+        setTimeout(function () {
+            if (questionNumber < questions.length - 1) {
+                questionNumber++;
+                console.log(questionNumber);
+                displayQuestion();
 
-}
-//reset - is it a function or click even with the button?
-$("#reset").on("click", function () {
-    $("#results").hide();
-    $("#reset").hide();
-    $("#question").empty();
-    $("#answer").empty();
-    questionNumber = 0;
-    displayQuestion();
-})
+            } else {
+                displayResults();
+            }
+        }, 3000);
+
+    })
+
+    // Show tally of correct/wrong answers to trivia
+    function displayResults() {
+        clearInterval(intervalID);
+        console.log(questionCorrect, questionWrong);
+        $("#question").empty();
+        $("#displayresults").show();
+        $("#results").append("<h3> Right Answers: " + questionCorrect + "</h3>");
+        $("#results").append("<h3> Wrong Answers: " + questionWrong + "</h3>");
+        $("#reset").show();
+
+    }
+    //reset - is it a function or click event with the button?
+    $("#reset").on("click", function () {
+        $("#results").hide();
+        $("#reset").hide();
+        $("#question").empty();
+        $("#answer").empty();
+        questionNumber = 0;
+        displayQuestion();
+    })
 })
 //End of Script
