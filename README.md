@@ -8,7 +8,10 @@
   * If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
 * On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
-##### Theme #####
+##### Any issues faced:
+* This game appears to have glitches when it runs on the GitHub server. When running off a local server, the photos and timer run as expected. When running on Github, sometimes the photos will stick to the next transition and the right/wrong answer will show the answer for the previous question. 
+
+### Theme ###
 * Pop Culture Trivia
 
 # Created with:
